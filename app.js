@@ -1,8 +1,20 @@
+/**
+ * 
+ * @ 设置app的相关选项
+ * 参考文档：https://blog.csdn.net/weixin_47284756/article/details/118460060?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=17
+ * 
+ * a. post请求，解析json格式，使用中间件express.json()
+ * b. 跨域的相关设置
+ * 
+ */
+// 测试代码
 // console.log('ok');
 // 1.首先引入express库
 const express = require('express');
+// 引入app对象
+const app = require('./bin/www');
 // 2.创建express的实例，代表服务器
-const app = express();
+// const app = express();
 // 引入route
 // const route = require('./routes/router');
 const routes = require('./routes');
@@ -13,7 +25,7 @@ routes(app);
 // post请求一般带有请求体，为了让Express能够识别json格式，使用中间件express.json()
 //
 // 3.设置监听端口
-const port = 3000;
+// const port = 3000;
 // 5.创建get服务
 /**
  *
@@ -58,10 +70,10 @@ const port = 3000;
 // });
 
 // 4.启动app服务器，并监听port端口，打印日志
-app.listen(port, () => {
-	// 打印log
-	console.log(`Express server is listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+// 	// 打印log
+// 	console.log(`Express server is listening at http://localhost:${port}`);
+// });
 /**
  *
  * @Express框架
@@ -72,9 +84,5 @@ app.listen(port, () => {
  * 对于多个各种不同类型请求，单独抽离到放在routes文件夹下的router.js文件中
  * 9.1 复制各种请求代码.到router.js文件
  * 9.2 在router.js文件中再次引入express包，然后拿到route实例，express.Router();将app替换成route
- *
- *
- *
- *
  *
  */
