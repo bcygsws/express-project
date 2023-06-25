@@ -8,16 +8,36 @@
 
 const mysql = require('mysql');
 const MYSQLCONF = require('../config/db');
-// 1.创建数据库的链接对象connection
-//2.创建一个new Promise并返回，处理输入的sql语句后的promise实例
 let conn;
 const handleDisconnect = () => {
-  // 创建数据库连接
+	// 创建数据库连接
+	// 1.创建数据库的链接对象connection
 	const connection = mysql.createConnection(MYSQLCONF);
-  // 处理连接错误，连接错误重连数据库
-  connection.on('error',(err)=>{
-    if(err.code==='PROTOCOL_CONNECTION_LOST'){
-      console.log('重连数据库');
-    }
-  })
+	// 2. 处理连接错误，连接错误码为"PROTOCOL_CONNECTION_LOST"则重连数据库
+	connection.on('error', (err) => {
+		if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+			console.log('重连数据库');
+			handleDisconnect();
+		} else {
+			// err.code不等于协议连接丢失，直接抛出异常
+			throw err;
+		}
+	});
+	conn = connection;
+};
+
+// 执行sql的函数
+// 2.创建一个new Promise并返回，处理输入的sql语句后的promise实例
+const exec = (sql) => {
+	// 每一次执行sql语句前，都要事先连接数据库
+	handleDisconnect();
+	return new Promise((resolve, reject) => {
+		conn.query(sql, (err, result) => {
+			if (err) return reject(err);
+			return resolve(result);
+		});
+	});
+};
+module.exports = {
+	exec
 };
