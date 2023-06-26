@@ -1,7 +1,28 @@
-/*
- * @Description: 
- * @Author: bcygsws@163.com
- * @Date: 2023-06-26 04:14:42
- * @LastEditTime: 2023-06-26 04:14:53
- * @FilePath: \vue-crossd:\Web-project\express-project\src\controller\user.js
+/**
+ *
+ * @写入sql语句，操作数据库
+ *
  */
+const { exec } = require('../db/mysql');
+// 查询所有用户的sql
+// 由于请求参数data,要依赖路由中的req获取，因此，data必须作为userList(data)函数的参数
+
+// 1.查询所有book表中的书籍信息
+const userList = (data) => {
+	const sql = 'select *from book';
+	return exec(sql, data).then((rows) => {
+		console.log(rows);
+		return rows || {};
+	});
+};
+
+// 2.查询student表中，id为某值的学生信息
+const idItem = (data) => {
+	const sql = 'select *from student where id=?';
+	return exec(sql, data).then((rows) => {
+		console.log(rows);
+		return rows || {};
+	});
+};
+// 暴露userList
+module.exports = { userList, idItem };

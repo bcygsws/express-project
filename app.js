@@ -1,27 +1,87 @@
 /**
- * 
+ *
  * @ 设置app的相关选项
  * 参考文档：https://blog.csdn.net/weixin_47284756/article/details/118460060?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=17
- * 
+ *
  * a. post请求，解析json格式，使用中间件express.json()
  * b. 跨域的相关设置
- * 
+ *
  */
 // 测试代码
 // console.log('ok');
 // 1.首先引入express库
-const express = require('express');
+// const express = require('express');
 // 引入app对象
 const app = require('./bin/www');
+// 引入处理post请求参的组件body-parser
+const bodyParser = require('body-parser');
+// 引入user路由对象
+const user = require('./src/router/user');
 // 2.创建express的实例，代表服务器
 // const app = express();
 // 引入route
 // const route = require('./routes/router');
-const routes = require('./routes');
-app.use(express.json());
+// const routes = require('./routes');
+
+// 防止跨域设置
+/**
+ * @ res.setHeader
+ * res.header
+ * 1.上述两者，都是用来设置标头的http响应
+ * 2.res.setHeader是node.js中就有的，只能设置单个的标头；然后
+ * res.header()是res.setHeader()在express框架中的名称，可以设置多个标头
+ *
+ * app.all()方法，可以 用于路由不同类型的请求，可能是get,也可能是post
+ * 即：app.all()可能是app.get()，也可能是app.post(),也可能是其他
+ *
+ */
+// 跨域是针对不同类型的请求的，故而使用app.all()
+app.all('*', function (req, res, next) {
+	console.log('有跨域请求');
+	// 设置允许跨域的路径，也是用通配符 *；表示所有请求路径都可以
+	res.header('Access-Control-Allow-Origin', '*');
+	// 设置Content-Type
+	res.header('Content-Type', 'application/json;charset=utf-8');
+	res.header(
+		'Content-Type',
+		'application/x-www-form-urlencoded;charset=utf-8'
+	);
+	// 配置响应标头的请求方式
+	res.header(
+		'Access-Control-Allow-Methods',
+		'PUT, POST, GET, DELETE, OPTIONS'
+	);
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild'
+	);
+	// 这里为options请求方式，单独做了处理
+	if (req.method.toLowerCase() == 'options')
+		res.send(200); //让options尝试请求快速结束
+	else {
+		next();
+	}
+});
+// app.use(express.json());
+// 二、使用bodyParser对post请求参数进行处理
+// 2.1 获得一个application/www-x-form-urlencoded格式的请求体的解析器
+app.use(
+	bodyParser.urlencoded({
+		extended: false
+	})
+);
+// 2.2 获得一个application/json格式的请求体的解析器,json方法里面可以传入参数
+app.use(bodyParser.json());
+// 2.3 bodyParser后面还可以跟raw或者text
+// bodyParser.raw({type: 'application/vnd.custom-type'}); // 把一些常用的东西转换成buffer形式
+// bodyParser.text({type:'text/html'});// 把html的body解析成一个字符串
+// 使用引入的user路由
+app.use('/', user);
+
 // 将子路由都放在/article路径下
 // app.use('/article', route);
-routes(app);
+// routes(app);
+
 // post请求一般带有请求体，为了让Express能够识别json格式，使用中间件express.json()
 //
 // 3.设置监听端口

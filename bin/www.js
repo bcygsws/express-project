@@ -8,7 +8,7 @@ const express = require('express');
 // express的实例对象，是app服务对象
 const app = express();
 // 端口变量port
-const port = 3000;
+const port = 3001;
  app.listen(port, () => {
 	console.log(`Server is listening at http://localhost:${port}`);
 });
