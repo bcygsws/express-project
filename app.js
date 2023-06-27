@@ -144,5 +144,8 @@ app.use('/', user);
  * 对于多个各种不同类型请求，单独抽离到放在routes文件夹下的router.js文件中
  * 9.1 复制各种请求代码.到router.js文件
  * 9.2 在router.js文件中再次引入express包，然后拿到route实例，express.Router();将app替换成route
+ * 
+ * @node.js后端实现图片接口，返回路径
+ * 
  *
  */
