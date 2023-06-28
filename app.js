@@ -23,6 +23,11 @@ const user = require('./src/router/user');
 // const route = require('./routes/router');
 // const routes = require('./routes');
 
+// 将图片静态资源托管在服务器上
+// 注意：浏览器中http://localhost:3001/img/img1.jpg就可以访问，不需要叠加app.use('/api',router)中的api路径
+// 本项目使用图仓软件-ImageHub，不使用express托管静态资源的方式，图仓软件中上传图片并转化为网络链接
+// app.use('/img', express.static('./public/images'));
+
 // 防止跨域设置
 /**
  * @ res.setHeader
@@ -76,7 +81,7 @@ app.use(bodyParser.json());
 // bodyParser.raw({type: 'application/vnd.custom-type'}); // 把一些常用的东西转换成buffer形式
 // bodyParser.text({type:'text/html'});// 把html的body解析成一个字符串
 // 使用引入的user路由
-app.use('/', user);
+app.use('/api', user);
 
 // 将子路由都放在/article路径下
 // app.use('/article', route);
@@ -144,8 +149,8 @@ app.use('/', user);
  * 对于多个各种不同类型请求，单独抽离到放在routes文件夹下的router.js文件中
  * 9.1 复制各种请求代码.到router.js文件
  * 9.2 在router.js文件中再次引入express包，然后拿到route实例，express.Router();将app替换成route
- * 
+ *
  * @node.js后端实现图片接口，返回路径
- * 
+ *
  *
  */
