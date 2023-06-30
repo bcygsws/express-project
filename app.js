@@ -151,6 +151,11 @@ app.use('/api', user);
  * 9.2 在router.js文件中再次引入express包，然后拿到route实例，express.Router();将app替换成route
  *
  * @node.js后端实现图片接口，返回路径
- *
- *
+ * @Mysql  
+ * 参考文档：https://blog.csdn.net/xiaoxiaoguailou/article/details/121990026
+ * 外键策略
+ * 1.手动置空
+ * 2.级联操作
+ * 
+ * 
  */

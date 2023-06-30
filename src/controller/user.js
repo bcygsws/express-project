@@ -26,11 +26,11 @@ const idItem = (data) => {
 };
 // 3.获取图片列表
 const getImages = (data) => {
-	const sql = 'select *from ';
+	const sql = 'select *from images';
 	return exec(sql, data).then((rows) => {
 		console.log(rows);
 		return rows || {};
 	});
 };
 // 暴露控制器函数给路由处理文件夹router
-module.exports = { userList, idItem };
+module.exports = { userList, idItem, getImages };

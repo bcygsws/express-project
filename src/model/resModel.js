@@ -12,9 +12,17 @@ const success = (msg, data) => {
 	if (!msg) {
 		msg = '';
 	}
+	/**
+	 * 
+	 * 状态码
+	 * 200 服务器处理了请求
+	 * 201 请求成功，并且创建了新的资源
+	 * 204 服务器成功处理了请求，但没有返回任何内容
+	 * 
+	 */
 	return {
 		msg,
-		code: 1,
+		code: 201,
 		data
 	};
 };
@@ -28,7 +36,7 @@ const fail = (msg, data) => {
 	}
 	return {
 		msg,
-		code: 0,
+		code: 204,
 		data
 	};
 };

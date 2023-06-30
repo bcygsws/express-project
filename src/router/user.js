@@ -5,7 +5,7 @@
  *
  */
 const express = require('express');
-const { userList, idItem } = require('../controller/user');
+const { userList, idItem, getImages } = require('../controller/user');
 const user = express.Router();
 const { success, fail } = require('../model/resModel');
 // 测试时，postman或Apifox中网址栏：localhost:3001/books 请求方式：get
@@ -56,48 +56,12 @@ user.post('/students/:id', async (req, res) => {
  */
 // 托管静态资源的图片路由处理
 
-user.get('/img', (req, res) => {
-	res.send([
-		success('返回的数据', [
-			{
-				id: 1,
-				title: '锡塔德足球俱乐部',
-				info: '经过多轮角逐，最终锡塔德U16女足获得22/23赛季U16联赛冠军',
-				//路径为本地服务器 + 托管前缀 + 文件夹下的图片路径名
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img1.jpeg'
-			},
-			{
-				id: 2,
-				title: '荷兰女足',
-				info: '范德东克和布鲁赫茨骑车，到达训练基地',
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img2.jpeg'
-			},
-			{
-				id: 3,
-				title:'青年风采',
-				info: '荷兰U19女足在取得进球后，激动拥抱庆祝胜利',
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img3.jpeg'
-			},
-			{
-				id: 4,
-				title:'元宵节',
-				info: '元宵佳节，融和天气 ',
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img4.jpeg'
-			},
-			{
-				id: 5,
-				title:'兹沃洛女足',
-				info: 'Noordman进球，赛后与球迷亲切合影留念',
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img5.jpeg'
-			},
-			{
-				id: 6,
-				title:'希望之星',
-				info: 'PSV埃因霍温女足潜力新星-阿尼克-扬森球衣照',
-				img_url: 'https://s1.imagehub.cc/images/2023/06/28/img6.jpeg'
-			}
-		])
-	]);
+user.get('/img', async (req, res) => {
+	// 查询操作，不需要引入参数data,设为null
+	const data = null;
+	const result = await getImages(data);
+	console.log(result);
+	res.send(success('返回的图片数据', result));
 });
 module.exports = user;
 /*
