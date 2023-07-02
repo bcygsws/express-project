@@ -151,26 +151,30 @@ app.use('/api', user);
  * 9.2 在router.js文件中再次引入express包，然后拿到route实例，express.Router();将app替换成route
  *
  * @node.js后端实现图片接口，返回路径
- * @Mysql  
+ * @Mysql
  * 参考文档：https://blog.csdn.net/xiaoxiaoguailou/article/details/121990026
- * 外键策略
+ * @外键策略
  * 1.手动置空
  * 思路：是先切断从表中的外键c_id与主表中c_id的联系，再从class_table表中删除c_id=2
  * 1.1 先使用命令：更改从表stu_table中c_id等于2的所有记录的c_id值
  * sql语句：
  * update stu_table set c_id=NULL where c_id=2;
  * 1.2 再使用删除命令，删除主表中c_id等于2的记录
- * 
+ *
  * 2.级联操作
  * 2.1 先删除添加的旧的约束,再添加带有级联的新的约束（当然一开始，创建表时就可以为stu_table添加带有级联的约束）
  * 2.2 上述文档中，是先为从表stu_table添加了不带级联的约束
  * alter table stu_table add constraint fk_c_id foreign key (c_id) references class_table(c_id);
- * 
+ *
  * 2.3 那么，要想表2中c_id等于3的记录值变更为c_id等于2时，从表中跟随这种变化
  * 需要先删除旧的不带级联的约束
  * alter table stu_table drop foreign key fk_c_id;
  * 然后为从表stu_table添加新的带级联的约束,只需要2.2 中不带级联的约束sql语句，稍作修改就可以
- * alter table stu_table add constraint fk_c_id foreign key (c_id) references class_table(c_id) on update 
+ * alter table stu_table add constraint fk_c_id foreign key (c_id) references class_table(c_id) on update
  * cascade on delete cascade;
- * 
+ *
+ * @mysql各种算术符
+ * count(*) as whole_num
+ * sum(if(gender='男',1,0)) as boy
+ *
  */
