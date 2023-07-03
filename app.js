@@ -177,4 +177,23 @@ app.use('/api', user);
  * count(*) as whole_num
  * sum(if(gender='男',1,0)) as boy
  *
+ * sql完整教程
+ * 参考文档：
+ * https://zhuanlan.zhihu.com/p/381433715
+ * 关键知识点
+ * 1.1 select distinct 查询不同行
+ * 例如：一个student学生表中，有1、2、3班学生的记录
+ * Navicat工具中： MyBook连接/数据库 book_database/表 student
+ * 为了只得到不同班级的记录，使用sql语句：
+ * select distinct class_id from student;
+ * 
+ * 1.2 操作符:operator
+ * > < = != (不等于 <>)
+ * select column_name1,column_name2,…… from table_name where column_name operator value;
+ * 
+ * select id,name,age,class_id from student where name='扁素问';
+ *
+ *
+ *
+ *
  */
