@@ -186,14 +186,30 @@ app.use('/api', user);
  * Navicat工具中： MyBook连接/数据库 book_database/表 student
  * 为了只得到不同班级的记录，使用sql语句：
  * select distinct class_id from student;
- * 
+ *
  * 1.2 操作符:operator
  * > < = != (不等于 <>)
  * select column_name1,column_name2,…… from table_name where column_name operator value;
- * 
+ *
  * select id,name,age,class_id from student where name='扁素问';
+ * 1.3 insert插入sql语句
+ * insert into student values(null,'张无忌',22,'男',2);
+ * 或者
+ * insert into student (id,name,age,gender,class_id) values(null,'张无忌',22,'男',2);
  *
+ * 1.4 update更改记录中的某个value值
+ * update student set name='医者圣女扁素问' where id=3;
  *
+ * 1.5 delete删除某条记录
+ * delete from student where id=6;
+ *
+ * 1.6 sql算术运算符和比较运算符
+ * 参考文档：https://blog.csdn.net/weixin_44216392/article/details/107701999
+ * 参考文档1：https://blog.51cto.com/u_15127507/4540672
+ *
+ * sql的算术运算符:加+、减-、乘*、除/
+ * 可以像数学中运算一样，和列名进行运算
+ * select id,name,age,age*2 as age_x2 from student;
  *
  *
  */
