@@ -293,15 +293,97 @@ app.use('/api', user);
  * 需要使用is null或者is not null语句  来直接来进行查询
  * select *from student where worth is null;
  * select *from student where worth is not null;
+ * 
+ * 1.6.4 关于sql中的隐式转换
+ * 参考文档：https://blog.csdn.net/weixin_44388689/article/details/125251033
+ * 
+ * select 'a'=0 from  student;
+ * 上述语句，结果是1；原因：当比较运算符一边是一个数字，另外一边是字符串时，字符串会转换为数字进行比较
+ * 注意：SQL中隐式的将字符串'a'转换成了数字0，上述sql语句也验证了这一结果
+ * SELECT 1=2,1!=2,1='1',2='2',1='a',0='a',1='b',0='abc','a'='a',''=NULL,NULL=NULL FROM student;
+ * 
+ * 等号比较运算符，如果=两侧的值、字符串和表达式相等，则结果为1；否则为0
+ * 等号比较运算符，如果=两侧都是数字，两侧数字相等为1，不等为0（特殊：如果1='1'，其结果仍然是相等，sql隐式将'1'转化成了数字1）
+ * 等号比较运算符，如果=两侧都是字符串，比较的时候，是比较字符对应的ASCII码
+ * 等号比较运算符，如果=两侧，一边为字符串，一边为数字，sql会隐式将字符串转化成数字，两种重要的情形：
+ * 'a'=0 ,注意：字符串'b'并不等于1
+ * 1='1' 2='2'
+ * 等号比较运算符，如果=两侧的值、字符串或者表达式，有结果为null,则这个表达式对的结果就是null（其他非等号运算符也适用）
+ * 安全等号比较运算符和等号比较运算符，有些许差异；
+ * 例如：''<=>NULL 结果为0
+ * NULL<=>NULL 结果为1
+ * 
+ * 1.6.5 非符号运算符
+ * 参考文档：
+ * https://blog.csdn.net/qq_44111805/article/details/124403278
+ * 
+ * 空字符或非空字符的三种方式：
+ * 方式一：IS NULL/IS NOT NULL
+ * SQL的例句：
+ * select *from student where worth IS NULL;
+ * select *from student where worth IS NOT NULL;
+ * 
+ * 方式二：ISNULL(exp) / NOT ISNULL(exp)
+ * SQL的例句：
+ * select *from student where ISNULL(worth);
+ * select *from student where NOT ISNULL(worth);
+ * 
+ * 方式三：列名<=>NULL / NOT 列名<=>NULL
+ * sql例句：
+ * select *from student where worth<=>NULL;
+ * select *from student where NOT worth<=>NULL;
+ * 
+ * 1.6.6 LEAST(exp) GREATEST(exp)
+ * least(1,2,34)  结果：1
+ * least('a','k','m') 结果：a
+ * least(1,2,NULL) 结果：NULL
+ * 
+ * greatest(1,2,34)  结果：34
+ * greatest('a','k','m') 结果：m
+ * greatest(1,2,NULL) 结果：NULL
+ * 
+ * 1.6.7 between……and用法 
+ * where worth between 2000 and 3000;
+ * where worth not between 2000 and 3000;
+ * 
+ * 1.6.8 in/not in
+ * where age in(18,20,22)
+ * where age not in(18,20,22)
+ * 
+ * 'a' in('a','b','c') 结果是1
+ * 1 in(1,2) 结果是1
+ * null in(1,2) 结果是null
+ * null in (1,null) 结果仍然是null
+ * 
+ * 1.6.9 like 
  *
- * 1.6.4 逻辑运算符
+ *  % 能匹配0个或者多个字符
+ *  _下划线，只能匹配1个字符
+ * select * from student;
+ * 查询名字中包含 “无”字的记录
+ * select *from student where name like '%无%';
+ * 
+ * 1.6.10 REGEXP正则表达式的运用
+ * 
+ * 'language' REGEXP '^l' 结果是1
+ * 'skhstart' REGEXP 'e$' 结果是0
+ * 'skhstart' REGEXP 'an' 结果是0
+ * 'atguigu' REGEXP 'gu.gu' 结果是1， .可以匹配任意单个字符
+ * 'atguigu' REGEXP '[ab]',字符串 atguigu中是否包含a或者b字符？显然，包含a，结果是1
+ * 
+ * 1.7 逻辑运算符  
  * 参考文档：https://blog.csdn.net/qq_44111805/article/details/124403278
- *
- *
- *
- *
- *
- *
+ * 与 AND 或者&&
+ * 或 OR 或者 ||
+ * 非 not 或者!
+ * 异或 XOR 
+ * 逻辑异或真值表
+ * 两个数都为0，或者都不为0，则异或结果是0
+ * 两个数，一个是0，一个是1，结果一定是1
+ * 实例：
+ * 0 XOR 0 XOR 0 结果是0
+ * 1 XOR 1 XOR 1 结果是1
+ * 
  *
  *
  */
