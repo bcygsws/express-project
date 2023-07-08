@@ -79,3 +79,15 @@ https://www.imagehub.cc/image/img4.f7o1Ss
 https://www.imagehub.cc/image/img5.f7oCNI
 
 */
+/**
+ * 
+ * @点击图片-进入图片详情页
+ * 通过id访问图片详情页
+ * 地址：/img/:id
+ * 请求方式：get
+ * 作用：用于获取图片详情页的详情
+ * 传入图片的参数：图片id,id的写法 :img/2
+ * 返回数据格式：json
+ * 
+ * 
+ */
