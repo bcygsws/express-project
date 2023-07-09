@@ -5,7 +5,12 @@
  *
  */
 const express = require('express');
-const { userList, idItem, getImages } = require('../controller/user');
+const {
+	userList,
+	idItem,
+	getImages,
+	getImageInfo
+} = require('../controller/user');
 const user = express.Router();
 const { success, fail } = require('../model/resModel');
 // 测试时，postman或Apifox中网址栏：localhost:3001/books 请求方式：get
@@ -80,7 +85,7 @@ https://www.imagehub.cc/image/img5.f7oCNI
 
 */
 /**
- * 
+ *
  * @点击图片-进入图片详情页
  * 通过id访问图片详情页
  * 地址：/img/:id
@@ -88,6 +93,12 @@ https://www.imagehub.cc/image/img5.f7oCNI
  * 作用：用于获取图片详情页的详情
  * 传入图片的参数：图片id,id的写法 :img/2
  * 返回数据格式：json
- * 
- * 
+ *
  */
+// 根据id获取图片详情
+user.get('/img/:id', async (req, res) => {
+	const id = req.params.id;
+	const result = await getImageInfo([id]);
+	console.log(result);
+	res.send(success('当前图片详情数据', result));
+});
