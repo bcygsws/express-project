@@ -94,11 +94,18 @@ https://www.imagehub.cc/image/img5.f7oCNI
  * 传入图片的参数：图片id,id的写法 :img/2
  * 返回数据格式：json
  *
+ * 特别注意：send中发送的对象，在前端请求时，挂载在axios请求后，响应结果的result.data属性下面
+ * 即result.data展开后
+ * {
+ *   code:
+ *   info:
+ *   message:
+ * }
  */
 // 根据id获取图片详情
 user.get('/img/:id', async (req, res) => {
 	const id = req.params.id;
 	const result = await getImageInfo([id]);
 	console.log(result);
-	res.send(success('当前图片详情数据', result));
+	res.send(success('当前图片详情数据', result[0]));
 });
