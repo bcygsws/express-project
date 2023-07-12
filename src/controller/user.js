@@ -24,7 +24,7 @@ const idItem = (data) => {
 		return rows || {};
 	});
 };
-// 3.获取图片列表
+// 3.1获取图片列表
 const getImages = (data) => {
 	const sql = 'select *from images';
 	return exec(sql, data).then((rows) => {
@@ -32,13 +32,22 @@ const getImages = (data) => {
 		return rows || {};
 	});
 };
+// 3.2 获取图片分类
+const getImagesCat = (data) => {
+	const sql = 'select *from category';
+	return exec(sql, data).then((rows) => {
+		console.log(rows);
+		return rows || {};
+	});
+};
 // 4.根据id获取图片详情
 const getImageInfo = (data) => {
-	const sql = 'select images_info.id,images.title,images_info.click,images_info.add_time,images_info.content from images_info LEFT JOIN images on images_info.id=images.img_id where images_info.id=?';
+	const sql =
+		'select images_info.id,images.title,images_info.click,images_info.add_time,images_info.content from images_info LEFT JOIN images on images_info.id=images.img_id where images_info.id=?';
 	return exec(sql, data).then((rows) => {
 		console.log(rows);
 		return rows || {};
 	});
 };
 // 暴露控制器函数给路由处理文件夹router
-module.exports = { userList, idItem, getImages, getImageInfo };
+module.exports = { userList, idItem, getImages, getImageInfo,getImagesCat };

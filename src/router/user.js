@@ -9,6 +9,7 @@ const {
 	userList,
 	idItem,
 	getImages,
+	getImagesCat,
 	getImageInfo
 } = require('../controller/user');
 const user = express.Router();
@@ -59,7 +60,7 @@ user.post('/students/:id', async (req, res) => {
  *
  *
  */
-// 托管静态资源的图片路由处理
+// 3.1 托管静态资源的图片路由处理
 
 user.get('/img', async (req, res) => {
 	// 查询操作，不需要引入参数data,设为null
@@ -68,7 +69,13 @@ user.get('/img', async (req, res) => {
 	console.log(result);
 	res.send(success('返回的图片数据', result));
 });
-module.exports = user;
+// 3.2 获取图片分类
+user.get('/imgcategory', async (req, res) => {
+	const data = null;
+	const result = await getImagesCat(data);
+	console.log(result);
+	res.send(success('返回的图片分类', result));
+});
 /*
 图仓ImageHub网络地址： 
 https://s1.imagehub.cc/images/2023/06/28/img1.jpeg
@@ -109,3 +116,4 @@ user.get('/img/:id', async (req, res) => {
 	console.log(result);
 	res.send(success('当前图片详情数据', result[0]));
 });
+module.exports = user;
