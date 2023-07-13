@@ -24,9 +24,10 @@ const idItem = (data) => {
 		return rows || {};
 	});
 };
-// 3.1获取图片列表
-const getImages = (data) => {
-	const sql = 'select *from images';
+// 3.1根据图片分类（cat_id），获取图片列表
+const getImagesList = (data,sql) => {
+	// sql随着获取的id不同，id=0时获取所有分类图片，sql语句写法不同，故而getImagesList方法保留(data,sql)两个参数
+	// const sql = 'select *from images where cat_id=?';
 	return exec(sql, data).then((rows) => {
 		console.log(rows);
 		return rows || {};
@@ -50,4 +51,4 @@ const getImageInfo = (data) => {
 	});
 };
 // 暴露控制器函数给路由处理文件夹router
-module.exports = { userList, idItem, getImages, getImageInfo,getImagesCat };
+module.exports = { userList, idItem, getImagesList, getImageInfo, getImagesCat };

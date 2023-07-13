@@ -392,6 +392,11 @@ app.use('/api', user);
  * 0 XOR 0 XOR 0 结果是0
  * 1 XOR 1 XOR 1 结果是1
  *
+ * @MYSQL数据库之事务
+ * 参考文档：
+ * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
+ * 
+ * 事务的ACID特性
  *
  *
  */

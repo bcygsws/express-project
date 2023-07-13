@@ -8,7 +8,7 @@ const express = require('express');
 const {
 	userList,
 	idItem,
-	getImages,
+	getImagesList,
 	getImagesCat,
 	getImageInfo
 } = require('../controller/user');
@@ -62,12 +62,24 @@ user.post('/students/:id', async (req, res) => {
  */
 // 3.1 托管静态资源的图片路由处理
 
-user.get('/img', async (req, res) => {
-	// 查询操作，不需要引入参数data,设为null
-	const data = null;
-	const result = await getImages(data);
-	console.log(result);
-	res.send(success('返回的图片数据', result));
+user.get('/img/:cat_id', async (req, res) => {
+	// 查询操作,根据分类cat_id，求取sql中的id
+	// 路径中是/:cat_id，故而id的值是req.params.cat_id
+	const id = req.params.cat_id;
+	console.log(id);
+	console.log(typeof id);
+	const data = [id];
+	if (parseInt(id) == 0) {
+		const sql = 'select *from images';
+		const result = await getImagesList(data, sql);
+		console.log(result);
+		res.send(success('返回的图片数据', result));
+	} else {
+		const sql = 'select *from images where cat_id=?';
+		const result = await getImagesList(data, sql);
+		console.log(result);
+		res.send(success('返回的图片数据', result));
+	}
 });
 // 3.2 获取图片分类
 user.get('/imgcategory', async (req, res) => {
