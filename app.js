@@ -395,8 +395,36 @@ app.use('/api', user);
  * @MYSQL数据库之事务
  * 参考文档：
  * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
- * 
  * 事务的ACID特性
- *
+ * 参考文档1：
+ * https://blog.csdn.net/Trong_/article/details/128224148
+ * 2.1 概念
+ * 在数据库中，事务（transaction）把多个sql语句打包成一个整体，这些sql语句要么全部执行，要么全部不执行
+ * 2.2 使用场景
+ * 转账例子
+ * 2.3 事务的使用
+ * 如何保证事务的完整性？
+ * 如果事务执行过程中，出现了错误，只需要将这些操作恢复到之前的样子就好了，这就是回滚（rollback）操作
+ * 
+ * 语法：
+ * # 开始事务
+ * start transaction;
+ * 
+ * # 执行多条sql语句
+ * 
+ * # 提交/回滚
+ * commit/rollback;
+ * 
+ * 报错以后，回滚语句恢复原状
+ * rollback; 
+ * 然后查询student表
+ * select *from student;
+ * 
+ * 特别注意，事务也不是无所不能的，记录数据操作也是需要开销的，数据库中要是有上亿条数据，要使用几百G甚至多少T的空间，来记录这些
+ * 额外的东西
+ * 
+ * 
+ * 
+ * 
  *
  */
