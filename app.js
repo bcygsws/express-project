@@ -393,9 +393,7 @@ app.use('/api', user);
  * 1 XOR 1 XOR 1 结果是1
  *
  * @MYSQL数据库之事务
- * 参考文档：
- * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
- * 事务的ACID特性
+ * 
  * 参考文档1：
  * https://blog.csdn.net/Trong_/article/details/128224148
  * 2.1 概念
@@ -423,8 +421,19 @@ app.use('/api', user);
  * 特别注意，事务也不是无所不能的，记录数据操作也是需要开销的，数据库中要是有上亿条数据，要使用几百G甚至多少T的空间，来记录这些
  * 额外的东西
  * 
+ * 参考文档：
+ * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
+ * 事务的ACID特性
+ * a.原子性 atomicity
+ * 一个事务是一个最小的不可分割的单位，事务中所有操作，要么全部执行，要么全部未执行，没有中间状态
+ * 原子性:主要是通过事务日志中的回滚日志（undo log）来实现的;事务对数据库进行修改时，InnoDB会根据操作生成相反的操作
+ * undo log
  * 
+ * b.一致性 consistency
  * 
+ * c.隔离性 isolation
+ * 
+ * d.持久性 duration
  * 
  *
  */
