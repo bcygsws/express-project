@@ -393,7 +393,7 @@ app.use('/api', user);
  * 1 XOR 1 XOR 1 结果是1
  *
  * @MYSQL数据库之事务
- * 
+ *
  * 参考文档1：
  * https://blog.csdn.net/Trong_/article/details/128224148
  * 2.1 概念
@@ -403,37 +403,46 @@ app.use('/api', user);
  * 2.3 事务的使用
  * 如何保证事务的完整性？
  * 如果事务执行过程中，出现了错误，只需要将这些操作恢复到之前的样子就好了，这就是回滚（rollback）操作
- * 
+ *
  * 语法：
  * # 开始事务
  * start transaction;
- * 
+ *
  * # 执行多条sql语句
- * 
+ *
  * # 提交/回滚
  * commit/rollback;
- * 
+ *
  * 报错以后，回滚语句恢复原状
- * rollback; 
+ * rollback;
  * 然后查询student表
  * select *from student;
- * 
+ *
  * 特别注意，事务也不是无所不能的，记录数据操作也是需要开销的，数据库中要是有上亿条数据，要使用几百G甚至多少T的空间，来记录这些
  * 额外的东西
- * 
+ *
  * 参考文档：
  * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
  * 事务的ACID特性
  * a.原子性 atomicity
  * 一个事务是一个最小的不可分割的单位，事务中所有操作，要么全部执行，要么全部未执行，没有中间状态
  * 原子性:主要是通过事务日志中的回滚日志（undo log）来实现的;事务对数据库进行修改时，InnoDB会根据操作生成相反的操作
- * undo log
- * 
+ * undo log（undo log日志来保证事务的原子性）
+ *
  * b.一致性 consistency
- * 
+ * 事务执行前、后，保持数据的一致性状态；即使发生异常，也不会因为异常破坏数据的完整性约束,比如:数据的唯一性约束等
+ *
  * c.隔离性 isolation
- * 
+ * 一个数据库服务器，同时执行多个事务，多个事务之间的相互影响程度
+ * 一个服务器可以为多个客户端提供服务，多个客户端中每一个都执行多个事务，多个事务操作同一张表，很容易会出现数据相互影响
+ * 的的情况
+ *
+ * 事务的隔离性越高，就意味着事务之间的并发程度越低，执行效率越慢，数据的准确性越高
+ * 事务的隔离性越低，就意味着事务之间的并发程度越高，执行效率越快，但数据的准确性越低
+ * 事务的隔离性，是通过隔离级别来定义的，并用锁机制来实现写操作的隔离性，用MVCC来保证读操作的隔离性
+ *
  * d.持久性 duration
- * 
+ * 事务一旦提交，对数据的修改是持久性的，即使数据库宕机数据也不会丢失，这种持久性是通过redo log日志来保证的
+ *
  *
  */
