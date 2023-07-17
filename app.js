@@ -392,7 +392,7 @@ app.use('/api', user);
  * 0 XOR 0 XOR 0 结果是0
  * 1 XOR 1 XOR 1 结果是1
  *
- * @MYSQL数据库之事务
+ * @二、MYSQL数据库之事务
  *
  * 参考文档1：
  * https://blog.csdn.net/Trong_/article/details/128224148
@@ -443,6 +443,28 @@ app.use('/api', user);
  *
  * d.持久性 duration
  * 事务一旦提交，对数据的修改是持久性的，即使数据库宕机数据也不会丢失，这种持久性是通过redo log日志来保证的
- *
+ * @三、MySQL中的锁机制
+ * 参考文档：https://blog.csdn.net/be_racle/article/details/126566613
+ * 3.1 锁粒度
+ * 表锁
+ * 行锁
+ * 页锁
+ * 
+ * 3.2 兼容性
+ * 共享锁（S）
+ * 排他锁（X）
+ * 
+ * 3.3 加锁模式
+ * 简明记忆：“记 间 临 意 插”
+ * a.记录锁
+ * b.间隙锁（gap）
+ * c.临键锁
+ * d.意向锁
+ * e.插入意向锁
+ * 
+ * 3.4 加锁机制
+ * 乐观锁
+ * 悲观锁
+ * 
  *
  */
