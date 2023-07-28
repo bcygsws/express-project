@@ -504,8 +504,8 @@ app.use('/api', user);
  * insert into stu values(9,26,'Hannah');
  * 原因是：事务A中update操作进行时，也获取了(10,32]这个区间内的临键锁
  * 
- * d.意向锁
- * 意向锁也分为意向共享锁和意向排它锁
+ * d.意向锁 intension locks
+ * 意向锁也分为意向共享锁(IS)和意向排它锁(IX)
  * 场景：
  * 事务A获取了id=6的排它锁，未提交
  * select *from users where id=6 for update;
@@ -519,7 +519,7 @@ app.use('/api', user);
  * 
  * 逐行排查其他事务中是否有users表中任意一行的排它锁，效率极其低下；
  * 解决：引入意向共享锁
- * 
+ * 场景联系实际：孩童刚进入幼儿园，先在小本上写上自己的名字，出游乐场时划掉自己的名字
  * 
  * e.插入意向锁
  *
