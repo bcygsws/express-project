@@ -445,6 +445,8 @@ app.use('/api', user);
  * 事务一旦提交，对数据的修改是持久性的，即使数据库宕机数据也不会丢失，这种持久性是通过redo log日志来保证的
  * @三、MySQL中的锁机制
  * 参考文档：https://blog.csdn.net/be_racle/article/details/126566613
+ * 参考文档1：https://blog.csdn.net/weixin_43844718/article/details/127508389?spm=1001.2101.3001.6650.16&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-127508389-blog-118862400.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-127508389-blog-118862400.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=17
+ * 参考文档2：https://blog.csdn.net/weixin_45480785/article/details/118862400?utm_medium=distribute.pc_feed_404.none-task-blog-2~default~BlogCommendFromBaidu~Rate-3-118862400-blog-null.262^v1^pc_404_mixedpudn&depth_1-utm_source=distribute.pc_feed_404.none-task-blog-2~default~BlogCommendFromBaidu~Rate-3-118862400-blog-null.262^v1^pc_404_mixedpud
  * 3.1 锁粒度
  * 表锁 				表级锁：开销小、加锁块、不会出现死锁的现象；锁粒度最大，发生锁冲突的概率最大，并发度最低
  * 行锁         行级锁：开销大、加锁慢、会出现死锁的现象；锁粒度最小，发生锁冲突的概率最小，并发度高
