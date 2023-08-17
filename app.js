@@ -423,7 +423,9 @@ app.use('/api', user);
  *
  * 参考文档：
  * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
+ * 
  * 事务的ACID特性
+ * 
  * a.原子性 atomicity
  * 一个事务是一个最小的不可分割的单位，事务中所有操作，要么全部执行，要么全部未执行，没有中间状态
  * 原子性:主要是通过事务日志中的回滚日志（undo log）来实现的;事务对数据库进行修改时，InnoDB会根据操作生成相反的操作
