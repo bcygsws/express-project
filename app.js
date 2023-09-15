@@ -556,5 +556,4 @@ app.use('/api', user);
  * 
  * MySQL加锁机制总结
  * 
- * 
  */
