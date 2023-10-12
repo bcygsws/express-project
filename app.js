@@ -559,7 +559,9 @@ app.use('/api', user);
  * 总结：锁机制
  * 
  * 四、SQL基本语法
- * sql语句中的约束关键字
+ * 
+ * 4.1 sql语句中的约束关键字
+ * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * not null 非空约束
  * unique 唯一性约束
  * check 检查约束，MySQL不支持该关键字，新版mysql8.0支持check
