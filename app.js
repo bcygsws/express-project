@@ -569,6 +569,4 @@ app.use('/api', user);
  * primary key 主键约束
  * foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 
- * 4.2 
- * 
  */
