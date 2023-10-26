@@ -569,5 +569,9 @@ app.use('/api', user);
  * 举例：check(age>0 and age<100)
  * d. primary key 主键约束
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
+ * 给一张表添加外键的四种方式
+ * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
+ * 
+ * 
  * 
  */
