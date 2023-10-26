@@ -563,10 +563,11 @@ app.use('/api', user);
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * 
- * not null 非空约束
- * unique 唯一性约束
- * check 检查约束，MySQL不支持该关键字，新版mysql8.0支持check
- * primary key 主键约束
- * foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
+ * a. not null 非空约束
+ * b. unique 唯一性约束
+ * c. check 检查约束，MySQL不支持该关键字，新版mysql8.0支持check
+ * 举例：check(age>0 and age<100)
+ * d. primary key 主键约束
+ * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 
  */
