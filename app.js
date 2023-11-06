@@ -572,8 +572,7 @@ app.use('/api', user);
  * 给一张表添加外键的四种方式
  * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
  * 都可以通过第四种方式演化：
- * alter table 表名table1 add constraint fk_id foreign key(id) references 外键表名class_table(c_id)
- * 
+ * 命令：alter table 表名table1 add constraint fk_id foreign key(id) references 外键表名class_table(c_id)
  * 
  * 
  */
