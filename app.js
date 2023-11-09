@@ -574,6 +574,4 @@ app.use('/api', user);
  * 都可以通过第四种方式演化：
  * 命令：alter table 表名table1 add constraint fk_id foreign key(id) references 外键表名class_table(c_id)
  * 
- * 
- * 
  */
