@@ -571,8 +571,10 @@ app.use('/api', user);
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 给一张表添加外键的四种方式
  * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
- * 都可以通过第四种方式演化：
- * 命令：alter table 表名table1 add constraint fk_id foreign key(id) references 外键表名class_table(c_id)
+ *  e1.都可以通过第四种方式演化：
+ *  命令：alter table 表名tb1 add constraint fk_id foreign key(id) references 外键表名class_tb(c_id);
+ *  e2.第四种方式，也用于为已创建过的表，添加外键
+ *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  * 
  * 
  * 
