@@ -567,6 +567,10 @@ app.use('/api', user);
  * b. unique 唯一性约束
  * c. check 检查约束，MySQL 5.7不支持该关键字，新版mysql8.0支持check
  * 举例：check(age>0 and age<100)
+ * MySQL 5.7 不支持check关键字，如何补救?
+ * 答案：使用枚举关键字enum
+ * sex ENUM('男','女') default null;
+ * 
  * d. primary key 主键约束
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 给一张表添加外键的四种方式
@@ -575,6 +579,5 @@ app.use('/api', user);
  *  命令：alter table 表名tb1 add constraint fk_id foreign key(id) references 外键表名class_tb(c_id);
  *  e2.第四种方式，也用于为已创建过的表，添加外键
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
- * 
  * 
  */
