@@ -580,4 +580,7 @@ app.use('/api', user);
  *  e2.第四种方式，也用于为已创建过的表，添加外键
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  * 
+ * 
+ * 
+ * 
  */
