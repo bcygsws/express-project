@@ -581,7 +581,4 @@ app.use('/api', user);
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  * 
  * 
- * 
- * 
- * 
  */
