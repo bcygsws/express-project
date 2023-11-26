@@ -562,7 +562,7 @@ app.use('/api', user);
  * 
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
- * 
+ * 识记：非空 唯一 查 默认，外、主两键
  * a. not null 非空约束
  * b. unique 唯一性约束
  * c. check 检查约束，MySQL 5.7不支持该关键字，新版mysql8.0支持check
@@ -571,7 +571,7 @@ app.use('/api', user);
  * 答案：使用枚举关键字enum
  * sex ENUM('男','女') default null;
  * 
- * d. primary key 主键约束
+ * d.默认值约束 default，当没有插入值时，会自动使用默认值 
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 给一张表添加外键的四种方式
  * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
@@ -579,6 +579,7 @@ app.use('/api', user);
  *  命令：alter table 表名tb1 add constraint fk_id foreign key(id) references 外键表名class_tb(c_id);
  *  e2.第四种方式，也用于为已创建过的表，添加外键
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
+ * f.primary key 主键约束
  * 
  * 
  */
