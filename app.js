@@ -564,7 +564,7 @@ app.use('/api', user);
  * id int not null primary key auto_increment,
  * t_name varchar(20) not null,
  * t_age int(10) check(t_age>18 and t_age<40),
- * t_sex varchar(11) enum('男'，'女') 
+ * t_sex enum('男'，'女') default null,
  * )ENGINE=InnoDB default CHARSET=utf8;
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
@@ -588,6 +588,8 @@ app.use('/api', user);
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  * 
  * f. primary key 主键约束
+ * 
+ * 
  * 
  * 
  */
