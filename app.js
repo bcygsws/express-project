@@ -559,7 +559,13 @@ app.use('/api', user);
  * 总结：锁机制
  * 
  * 四、SQL基本语法
- * 
+ * 创建一张表的基本语法：
+ * create table tb(
+ * id int not null primary key auto_increment,
+ * t_name varchar(20) not null,
+ * t_age int(10) check(t_age>18 and t_age<40),
+ * t_sex varchar(11) enum('男'，'女') 
+ * )ENGINE=InnoDB default CHARSET=utf8;
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * 识记：非空 唯一 查 默认，外、主两键
@@ -582,6 +588,6 @@ app.use('/api', user);
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  * 
  * f. primary key 主键约束
- 
+ * 
  * 
  */
