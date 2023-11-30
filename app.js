@@ -597,6 +597,25 @@ app.use('/api', user);
  * 备注：如果要退出mysql界面模式，使用命令号，包含后面的分号
  * quit;
  * 
+ * 五、外键父表删除记录（当前表或者叫从表的记录依赖父表的记录）
+ * 有两种解决策略：置空法和级联法
+ * 5.1 置空法，先将当前表中c_id等于3的记录值修改为null,再使用delete语句删除主表（父表、参照表）中c_id等于的那条记录
+ * update stu_table set c_id=null where c_id=3;
+ * delete from class_table where c_id=3;
+ * 评价：但是这种方式，可以删除主表中c_id=3的记录确实被清除了，但是当前表或叫从表中的c_id=3变成null,这条记录本身仍然存在
+ * 
+ * 5.2 更为彻底的方法，是使用 更新级联+删除级联
+ * 步骤：
+ * 先删除原有的外键约束
+ * 再次添加带有级联更新和级联删除的外键约束
+ * 
+ * alter table stu_table drop foreign key fk_c_id;
+ * 
+ * alter table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
+ * on delete cascade;
+ * 
+ * 
+ * 
  * 
  * 
  * 
