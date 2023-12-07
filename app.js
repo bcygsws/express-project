@@ -608,7 +608,7 @@ app.use('/api', user);
  * 步骤：
  * 先删除原有的外键约束
  * 再次添加带有级联更新和级联删除的外键约束
- * 
+ * 两行命令：
  * alter table stu_table drop foreign key fk_c_id;
  * 
  * alter table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
