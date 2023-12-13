@@ -566,6 +566,20 @@ app.use('/api', user);
  * t_age int(10) check(t_age>18 and t_age<40),
  * t_sex enum('男'，'女') default null,
  * )ENGINE=InnoDB default CHARSET=utf8;
+ * 
+ * navicat创建的表，从图形界面导出sql文件时，primary key(s_id) using BTREE
+ * 参考文档：https://blog.51cto.com/u_15127632/4856441
+ * BTREE是一种索引
+ * 1.索引的好处：
+ * 1.1.使用索引可以减少存储引擎所需要扫描的数据量，加快查询速度
+ * 1.2.使用索引可以将随机I/O变成顺序I/O
+ * 1.3.索引可以帮助我们将搜索结果排序，以避免使用磁盘临时表
+ * 2.索引的分类：
+ * 2.1 引擎的索引包括两种方式：BTREE和HASH
+ * 2.2 MYISAM(不支持事务机制，早期的索引顺序访问改良而来，ISAM indexed sequential access method)和InnoDB引擎只可以使用btree这种索引方式
+ * 2.2 memory和heap（堆）存储引擎可以使用btree和hash两种索引方式
+ * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
+ * 
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * 识记：非空 唯一 查 默认，外、主两键
