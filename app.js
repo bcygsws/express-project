@@ -109,39 +109,39 @@ app.use('/api', user);
  *
  */
 // app.get('/', (req, res) => {
-// 	// 在回调函数中调用响应对象res的send方法，发送响应给客户端
+// 在回调函数中调用响应对象res的send方法，发送响应给客户端
 // 	res.send('hello world');
 // });
 
-// // 6.创建post服务，需要中间件的辅助
-// // post创建新的资源，一般会自带请求体（即：req.body），请求体一般是json格式，为了使得Express能够识别json格式，
-// // 需要使用中间件express.json()来扩展express的功能
+// 6.创建post服务，需要中间件的辅助
+// post创建新的资源，一般会自带请求体（即：req.body），请求体一般是json格式，为了使得Express能够识别json格式，
+// 需要使用中间件express.json()来扩展express的功能
 // app.post('/', (req, res) => {
-// 	// 可在postman工具中测试
-// 	// console.log(req.body);
+// 可在postman工具中测试
+// console.log(req.body);
 // 	console.log('收到请求体是：', req.body);
 // 	res.status(201).send();
 // });
-// // 7.测试put服务
-// // /:id 路径中的:id整体，都会成为参数，例如：/1 /2
-// // 地址栏：http://localhost:3000/1 ,请求体与post一样，也可以设置，req.params.id拿到请求参数，req.body拿到请求体
+// 7.测试put服务
+// /:id 路径中的:id整体，都会成为参数，例如：/1 /2
+// 地址栏：http://localhost:3000/1 ,请求体与post一样，也可以设置，req.params.id拿到请求参数，req.body拿到请求体
 // app.put('/:id', (req, res) => {
 // 	console.log('收到的请求参数：', req.params.id);
 // 	console.log('收到的请求体是：', req.body);
-// 	// 返回响应，状态码默认是200
+// 返回响应，状态码默认是200
 // 	res.send();
 // });
 
-// // 8.测试delete服务
+// 8.测试delete服务
 // app.delete('/:id', (req, res) => {
 // 	console.log('删除的请求参数的id：', req.params.id);
-// 	// 链式写法
+// 链式写法
 // 	res.status(204).send();
 // });
 
 // 4.启动app服务器，并监听port端口，打印日志
 // app.listen(port, () => {
-// 	// 打印log
+// 打印log
 // 	console.log(`Express server is listening at http://localhost:${port}`);
 // });
 /**
@@ -422,7 +422,7 @@ app.use('/api', user);
  *
  * 参考文档：
  * https://mbd.baidu.com/newspage/data/landingsuper?sid_for_share&isBdboxFrom=1&pageType=1&urlext=%7B%22cuid%22%3A%22g8Hia_ax28_eP2aCgu2dal832ulza289_av5agawSuloav8Zg8SOt0is3R0OfWOKbIUmA%22%7D&context=%7B%22nid%22%3A%22news_9265701224382405676%22,%22sourceFrom%22%3A%22search%22%7D
- * 
+ *
  * 事务的ACID特性
  * a.原子性 atomicity
  * 一个事务是一个最小的不可分割的单位，事务中所有操作，要么全部执行，要么全部未执行，没有中间状态
@@ -474,7 +474,7 @@ app.use('/api', user);
  * b1.间隙锁是InnoDB在可重复读（RR）隔离级别为解决幻读问题而引入的机制
  * b2.间隙锁是行级锁的一种
  * b2.务必牢记：间隙锁锁定的是一个区间，而不仅仅是区间中的每一条数据
- * 
+ *
  * 举例：emp表中有101条数据（原始数据：最大的emp_id是101）
  * select *from emp where emp_id>100 for update;
  * 分析：条件检索，是一条排他（for update是排它锁）间隙锁
@@ -493,71 +493,71 @@ app.use('/api', user);
  * 3	24	lisi
  * 5	32	wangwu
  * 7	45	zhaoliu
- * 
+ *
  * sql语句：
  * c1.根据非唯一索引列update某条数据（如果是唯一索引列就是记录锁了，退化成了临键锁）
  * update name='zhangsanfeng' where age=24;
  * age是非索引列，潜在的临键锁有(负无穷，10],(10,24],(24,32],(32,45],(45,正无穷]
- * 
+ *
  * c2.根据非唯一索引列，锁住某条记录
- * select *from stu where id=24 for update; 
- * 
+ * select *from stu where id=24 for update;
+ *
  * 无论是上面的哪条sql执行后，之后在事务B中执行下面语句都会被阻塞
  * insert into stu values(9,26,'Hannah');
  * 原因是：事务A中update操作进行时，也获取了(10,32]这个区间内的临键锁
- * 
+ *
  * d.意向锁 intension locks
  * 四点注意：
  * 1.意向共享锁和意向排他锁都是表级锁
  * 2.意向锁是一种不会与行级锁冲突的表级锁，这点非常重要
  * 3.意向锁是InnoDB自动加的，不需要用户主动干预
  * 4.意向锁是InnoDB下存在的内部锁，MyISAM中没有意向锁的概念
- * 
+ *
  * 意向锁也分为意向共享锁(IS)和意向排它锁(IX)
  * 场景：
  * 事务A获取了id=6的排它锁，未提交
  * select *from users where id=6 for update;
  * 事务B想要获取users表的表锁
  * lock table users read;
- * 
+ *
  * 表的读锁，就是共享锁
  * 1.共享锁和排它锁时互斥的，不可能同时存在于一个事务中
  * 2.事务B必须确认是否有其他事务中有users表的排它锁
  * 3.事务B也必须确认是否有其他事务用于表users中任意一行的排它锁
- * 
+ *
  * 逐行排查其他事务中是否有users表中任意一行的排它锁，效率极其低下；
  * 解决：引入意向共享锁
  * 场景联系实际：孩童刚进入幼儿园，先在小本上写上自己的名字，出游乐场时划掉自己的名字
  * 意向锁的目的：
  * 引入意向锁，是为了使得行锁和表锁高效的共存
- * 
+ *
  * e.插入意向锁
  * 参考文档：
  * 1.定义：
- * 
+ *
  * 2.使用场合：
- * 
+ *
  * 3.4 加锁机制
  * 乐观锁和悲观锁
- * 
+ *
  * 3.4.1 乐观锁
  * 认为别的线程不会修改数据，所以不会上锁；但在更新的时候会判断在此期间有没有别的线程更新这个数据
- * 
+ *
  * 乐观锁使用场景：
  * 适用于读多写少的情况，减少[锁操作冲突]，也是减少[锁竞争的开销]，提高系统的吞吐量。
  *
  * 3.4.2 悲观锁
  * 认为别的线程会修改数据，所以每次在拿数据时都会上锁，其他线程修改数据的操作会被阻塞直到自己拿到锁
- * 
+ *
  * 悲观锁的适用场景：
  * 适用于写多读少的场景；因为，此时如果使用乐观锁的话，就会出现大量的锁操作冲突，会导致应用层不断地retry,反而
  * 降低系统性能
- * 
+ *
  * 【总结】MySQL事务和加锁机制
  * 总结：事务
- * 
+ *
  * 总结：锁机制
- * 
+ *
  * 四、SQL基本语法
  * 创建一张表的基本语法：
  * create table tb(
@@ -566,7 +566,7 @@ app.use('/api', user);
  * t_age int(10) check(t_age>18 and t_age<40),
  * t_sex enum('男'，'女') default null,
  * )ENGINE=InnoDB default CHARSET=utf8;
- * 
+ *
  * navicat创建的表，从图形界面导出sql文件时，primary key(s_id) using BTREE
  * 参考文档：https://blog.51cto.com/u_15127632/4856441
  * BTREE是一种索引
@@ -579,7 +579,7 @@ app.use('/api', user);
  * 2.2 MYISAM(不支持事务机制，早期的索引顺序访问改良而来，ISAM indexed sequential access method)和InnoDB引擎只可以使用btree这种索引方式
  * 2.2 memory和heap（堆）存储引擎可以使用btree和hash两种索引方式
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
- * 
+ *
  * 4.1 sql语句中的约束 关键字
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * 识记：非空 唯一 查 默认，外、主两键
@@ -590,9 +590,9 @@ app.use('/api', user);
  * MySQL 5.7 不支持check关键字，如何补救?
  * 答案：使用枚举关键字enum
  * sex ENUM('男','女') default null;
- * 
- * d.默认值约束 default，当没有插入值时，会自动使用默认值 
- * 
+ *
+ * d.默认值约束 default，当没有插入值时，会自动使用默认值
+ *
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 给一张表添加外键的四种方式
  * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
@@ -600,33 +600,33 @@ app.use('/api', user);
  *  命令：alter table 表名tb1 add constraint fk_id foreign key(id) references 外键表名class_tb(c_id);
  *  e2.第四种方式，也用于为已创建过的表，添加外键
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
- * 
+ *
  * f. primary key 主键约束
- * 
+ *
  * cmd黑窗口如何进入mysql命令行模式？
  * 1.mysql -u root -p
  * 会有提示输入密码，密码为123456
- * 
+ *
  * 2.即可进入mysql模式界面
  * 备注：如果要退出mysql界面模式，使用命令号，包含后面的分号
  * quit;
- * 
+ *
  * 五、外键父表删除记录（当前表或者叫从表的记录依赖父表的记录）
  * 有两种解决策略：置空法和级联法
  * 5.1 置空法，先将当前表中c_id等于3的记录值修改为null,再使用delete语句删除主表（父表、参照表）中c_id等于的那条记录
  * update stu_table set c_id=null where c_id=3;
  * delete from class_table where c_id=3;
  * 评价：但是这种方式，可以删除主表中c_id=3的记录确实被清除了，但是当前表或叫从表中的c_id=3变成null,这条记录本身仍然存在
- * 
+ *
  * 5.2 更为彻底的方法，是使用 更新级联+删除级联
  * 步骤：
  * 先删除原有的外键约束
  * 再次添加带有级联更新和级联删除的外键约束
  * 两行命令：
  * alter table stu_table drop foreign key fk_c_id;
- * 
+ *
  * alter table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
  * on delete cascade;
- * 
- * 
+ *
+ *
  */
