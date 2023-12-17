@@ -567,7 +567,7 @@ app.use('/api', user);
  * t_sex enum('男'，'女') default null,
  * )ENGINE=InnoDB default CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='学生信息表';
  * 
- * row_format:行格式，表示的是每一行（或数据记录）在内存中的存储方式；
+ * 注：row_format:行格式，表示的是每一行（或数据记录）在内存中的存储方式；
  * 行格式 有compact（n.契约、约定、带镜小粉盒;adj.矮小而健壮的，小型的，体积小的，坚实的，袖珍的）、dynamic、Redundant、compressed这四种
  * redundant，联想reduce,要被减少的的，不需要的，冗余的
  *
