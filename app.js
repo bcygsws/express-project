@@ -66,7 +66,7 @@ app.all('*', function (req, res, next) {
 		'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderField'
 	);
 	// 这里为options请求方式，单独做了处理
-	if (req.method.toLowerCase() == 'options')
+	if (req.method.toLowerCase() === 'options')
 		res.send(200); //让options尝试请求快速结束
 	else {
 		next();
@@ -392,7 +392,6 @@ app.use('/api', user);
  * 1 XOR 1 XOR 1 结果是1
  *
  * @二、MYSQL数据库之事务
- *
  * 参考文档1：
  * https://blog.csdn.net/Trong_/article/details/128224148
  * 2.1 概念
