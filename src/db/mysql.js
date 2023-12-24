@@ -9,6 +9,7 @@
 
 const mysql = require('mysql');
 const MYSQLCONF = require('../config/db');
+// 定义数据库连接对象conn
 let conn;
 // handleDisconnect函数，用以获得数据库连接对象conn
 const handleDisconnect = () => {
