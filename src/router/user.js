@@ -69,7 +69,7 @@ user.get('/img/:cat_id', async (req, res) => {
 	console.log(id);
 	console.log(typeof id);
 	const data = [id];
-	if (parseInt(id) == 0) {
+	if (parseInt(id) === 0) {
 		const sql = 'select *from images';
 		const result = await getImagesList(data, sql);
 		console.log(result);
