@@ -16,7 +16,7 @@ const app = require('./bin/www');
 // 引入处理post请求参的组件body-parser
 const bodyParser = require('body-parser');
 // 引入user路由对象
-const user = require('./src/router/user');
+const user = require('./src/router/router');
 // 2.创建express的实例，代表服务器
 // const app = express();
 // 引入route
