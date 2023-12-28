@@ -1,6 +1,7 @@
 /**
  *
  * @写入sql语句，操作数据库
+ * 所有函数都是Promise
  *
  */
 const { exec } = require('../db/mysql');

@@ -43,10 +43,13 @@ const router = require('./src/router/router');
  * 其余处，都是res响应对象的header方法
  * res.header()
  *
- *
+ * 跨域是针对不同类型的请求的，故而使用app.all(path，callback)
+ * 参数：
+ * path：调用中间件的路径
+ * callback：中间件回调函数
  */
-// 跨域是针对不同类型的请求的，故而使用app.all()
-app.all('*', function (req, res, next) {
+
+app.all('*', (req, res, next) => {
 	console.log('有跨域请求');
 	// 设置允许跨域的路径，也是用通配符 *；表示所有请求路径都可以
 	res.header('Access-Control-Allow-Origin', '*');
