@@ -16,7 +16,7 @@ const app = require('./bin/www');
 // 引入处理post请求参的组件body-parser
 const bodyParser = require('body-parser');
 // 引入user路由对象
-const user = require('./src/router/router');
+const router = require('./src/router/router');
 // 2.创建express的实例，代表服务器
 // const app = express();
 // 引入route
@@ -86,7 +86,7 @@ app.use(bodyParser.json());
 // bodyParser.raw({type: 'application/vnd.custom-type'}); // 把一些常用的东西转换成buffer形式
 // bodyParser.text({type:'text/html'});// 把html的body解析成一个字符串
 // 使用引入的user路由
-app.use('/api', user);
+app.use('/api', router);
 
 // 将子路由都放在/article路径下
 // app.use('/article', route);
@@ -565,7 +565,7 @@ app.use('/api', user);
  * t_age int(10) check(t_age>18 and t_age<40),
  * t_sex enum('男'，'女') default null,
  * )ENGINE=InnoDB default CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='学生信息表';
- * 
+ *
  * 注：row_format:行格式，表示的是每一行（或数据记录）在内存中的存储方式；
  * 行格式 有compact（n.契约、约定、带镜小粉盒;adj.矮小而健壮的，小型的，体积小的，坚实的，袖珍的）、dynamic、Redundant、compressed这四种
  * redundant，联想reduce,要被减少的的，不需要的，冗余的
