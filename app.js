@@ -590,14 +590,16 @@ app.use('/api', router);
  * 参考文档：https://blog.csdn.net/qq_24654501/article/details/105973223
  * 识记：非空 唯一 查 默认，外、主两键
  * a. not null 非空约束
+ *
  * b. unique 唯一性约束
+ *
  * c. check 检查约束，MySQL 5.7不支持该关键字，新版mysql8.0支持check
  * 举例：check(age>0 and age<100)
  * MySQL 5.7 不支持check关键字，如何补救?
  * 答案：使用枚举关键字enum
  * sex ENUM('男','女') default null;
  *
- * d.默认值约束 default，当没有插入值时，会自动使用默认值
+ *  d.默认值约束 default，当没有插入值时，会自动使用默认值
  *
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
  * 给一张表添加外键的四种方式
@@ -635,6 +637,4 @@ app.use('/api', router);
  * b.为表添加外键约束
  * alter table stu_table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
  * on delete cascade;
- *
- *
  */
