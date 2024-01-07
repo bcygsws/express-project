@@ -1,6 +1,6 @@
 /**
  *
- * @ 设置app的相关选项
+ * @设置app的相关选项
  * 参考文档：https://blog.csdn.net/weixin_47284756/article/details/118460060?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-118460060-blog-121008927.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=17
  *
  * a. post请求，解析json格式，使用中间件express.json()
@@ -30,7 +30,7 @@ const router = require('./src/router/router');
 
 // 防止跨域设置
 /**
- * @ res.setHeader
+ * @res.setHeader
  * res.header
  * 1.上述两者，都是用来设置标头的http响应
  * 2.res.setHeader是node.js中就有的，只能设置单个的标头；然后
