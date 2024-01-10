@@ -20,7 +20,7 @@ const handleDisconnect = () => {
 	connection.on('error', (err) => {
 		if (err.code === 'PROTOCOL_CONNECTION_LOST') {
 			console.log('重连数据库');
-			// 协议连接丢失时，还能挽救，递归调用这个方法，重新连接数据库
+			// 协议连接丢失时，还能挽救，尝试【递归调用】这个方法，重新连接数据库
 			handleDisconnect();
 		} else {
 			// err.code不等于协议连接丢失，直接抛出异常
@@ -48,6 +48,7 @@ const exec = (sql, data) => {
 		conn.end();
 	});
 };
+// 暴露数据库查询函数，exec；返回值是一个Promise
 module.exports = {
 	exec
 };
