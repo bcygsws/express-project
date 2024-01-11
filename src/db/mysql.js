@@ -5,6 +5,7 @@
  * controller文件夹下的user.js文件会引入exec 这一个sql执行函数
  * 函数返回值：是一个Promise对象
  *
+ *
  */
 
 const mysql = require('mysql');
