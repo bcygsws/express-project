@@ -36,10 +36,10 @@ const handleDisconnect = () => {
 const exec = (sql, data) => {
 	// 1.每一次执行sql语句前，都要事先生成数据库连接的对象conn
 	handleDisconnect();
+	// 2.连接数据库
 	// 返回一个Promise对象
+	conn.connect();
 	return new Promise((resolve, reject) => {
-		// 2.连接数据库
-		conn.connect();
 		// 3.数据库查询结果
 		conn.query(sql, data, (err, result) => {
 			if (err) return reject(err);
