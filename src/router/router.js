@@ -59,7 +59,6 @@ router.post('/students/:id', async (req, res) => {
  *
  */
 // 3.1 托管静态资源的图片路由处理
-
 router.get('/img/:cat_id', async (req, res) => {
 	// 查询操作,根据分类cat_id，求取sql中的id
 	// 路径中是/:cat_id，故而id的值是req.params.cat_id
@@ -126,4 +125,5 @@ router.get('/img/:id', async (req, res) => {
 	console.log(result);
 	res.send(success('当前图片详情数据', result[0]));
 });
+// 暴露路由对象
 module.exports = router;
