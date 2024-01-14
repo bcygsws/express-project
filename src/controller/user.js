@@ -51,7 +51,7 @@ const getImageInfo = (data) => {
 		return rows || {};
 	});
 };
-// 暴露控制器函数给路由处理文件夹router
+// 暴露控制器函数给路由处理文件router.js
 module.exports = {
 	userList,
 	idItem,
