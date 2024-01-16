@@ -51,6 +51,7 @@ router.post('/students/:id', async (req, res) => {
  *
  * 特别注意：两者的区别
  * 二、使用各种图仓
+ *
  * 2.1 例如：ImageHub,用户：bcygsws
  * 可以拿到url链接、缩略图等一系列满足需求的图片格式
  *
