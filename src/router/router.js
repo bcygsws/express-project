@@ -55,10 +55,8 @@ router.post('/students/:id', async (req, res) => {
  * 2.1 例如：ImageHub,用户：bcygsws
  * 可以拿到url链接、缩略图等一系列满足需求的图片格式
  *
- * 2.2 采用采用的是Github+jsDelivr+PicGo来搭建，完全免费
+ * 2.2 采用采用的是Github+jsDelivr+PicGo来搭建，此种方式完全免费
  * 参考文档：https://zhuanlan.zhihu.com/p/349756454
- *
- *
  *
  */
 // 3.1 托管静态资源的图片路由处理
