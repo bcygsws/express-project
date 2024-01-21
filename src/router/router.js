@@ -58,6 +58,8 @@ router.post('/students/:id', async (req, res) => {
  * 2.2 采用采用的是Github+jsDelivr+PicGo来搭建，此种方式完全免费
  * 参考文档：https://zhuanlan.zhihu.com/p/349756454
  *
+ *
+ *
  */
 // 3.1 托管静态资源的图片路由处理
 router.get('/img/:cat_id', async (req, res) => {
