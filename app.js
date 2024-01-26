@@ -637,6 +637,4 @@ app.use('/api', router);
  * b.为表添加外键约束
  * alter table stu_table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
  * on delete cascade;
- *
- *
  */
