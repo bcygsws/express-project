@@ -5,7 +5,7 @@
  *
  */
 const express = require('express');
-// express的实例对象，是app服务对象
+// express的实例对象（注：不用new），是app服务对象
 const app = express();
 // 端口变量port
 const port = 3001;
