@@ -52,8 +52,6 @@ const router = require('./src/router/router');
  * 参数：
  * path：调用中间件的路径
  * callback：中间件回调函数
- *
- * 
  */
 
 app.all('*', (req, res, next) => {
