@@ -6,7 +6,6 @@
  * a. post请求，解析json格式，使用中间件express.json()
  * b. 跨域的相关设置
  *
- *
  */
 // 测试代码
 // console.log('ok');
@@ -20,6 +19,7 @@ const bodyParser = require('body-parser');
 const router = require('./src/router/router');
 // 2.创建express的实例，代表服务器
 // const app = express();
+
 // 引入route
 // const route = require('./routes/router');
 // const routes = require('./routes');
