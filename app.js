@@ -19,7 +19,6 @@ const bodyParser = require('body-parser');
 const router = require('./src/router/router');
 // 2.创建express的实例，代表服务器
 // const app = express();
-
 // 引入route
 // const route = require('./routes/router');
 // const routes = require('./routes');
