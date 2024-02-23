@@ -25,9 +25,12 @@ router.get('/books', async (req, res) => {
 	res.send(success('返回的数据', result));
 });
 // 相当于修改某本书的详情，去到该书的详情页面的这步操作
-// 注意区分两种参数：params参数和query参数
-// students/:id是params参数，req.params.id可以拿到值
-// /students?id=1,这里的id才是查询参数，req.query.id可以拿到值
+/**
+ * @注意区分两种参数：params参数和query参数
+ * /students/:id是params参数，req.params.id可以拿到值
+ * /students?id=1,这里的id才是查询参数，req.query.id可以拿到值
+ *
+ * */
 router.post('/students/:id', async (req, res) => {
 	const id = req.params.id;
 	console.log(id); // 1
