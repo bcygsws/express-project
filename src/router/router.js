@@ -1,6 +1,5 @@
 /**
  *
- *
  * @路由地址请求，将查询得到的结果，返回到客户端
  *
  */
@@ -13,7 +12,7 @@ const {
 	getImageInfo
 } = require('../controller/user');
 const router = express.Router();
-const { success, fail } = require('../model/resModel');
+const {success, fail} = require('../model/resModel');
 // 测试时，postman或Apifox中网址栏：localhost:3001/books 请求方式：get
 router.get('/books', async (req, res) => {
 	// 由于其中的data,要从req中拿到，因此data这个参数，要放在userList函数中；即：userList(data)
@@ -21,7 +20,7 @@ router.get('/books', async (req, res) => {
 
 	// })
 	const result = await userList(null);
-	// 返回给前端
+	// 返回给前端，success()方法返回一个对象{info:'',code:'',message:''}
 	res.send(success('返回的数据', result));
 });
 // 相当于修改某本书的详情，去到该书的详情页面的这步操作
