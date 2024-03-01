@@ -611,6 +611,7 @@ app.use('/api', router);
  *
  * f. primary key 主键约束
  *
+ *
  * cmd黑窗口如何进入mysql命令行模式？
  * 1.mysql -u root -p
  * 会有提示输入密码，密码为123456
