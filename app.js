@@ -19,7 +19,7 @@ const bodyParser = require('body-parser');
 const router = require('./src/router/router');
 // 2.创建express的实例，代表服务器
 // const app = express();
-// 引入route
+// 3.引入route
 // const route = require('./routes/router');
 // const routes = require('./routes');
 
@@ -602,7 +602,7 @@ app.use('/api', router);
  *  d.默认值约束 default，当没有插入值时，会自动使用默认值
  *
  * e. foreign key 外键约束：两个一致，从表主键和主表外键有同一引用类型（例如：都是int）,同一编码方式，例如：都是utf8
- * 给一张表添加外键的四种方式
+ * 注：给一张表添加外键的四种方式
  * 参考文档：https://www.cnblogs.com/qisong178878915/p/4435488.html
  *  e1.都可以通过第四种方式演化：
  *  命令：alter table 表名tb1 add constraint fk_id foreign key(id) references 外键表名class_tb(c_id);
@@ -610,6 +610,7 @@ app.use('/api', router);
  *  上述命令可简化为：alter table 表名 tb1 add foreign key(id) references 外键表名class_tb(c_id);
  *
  * f. primary key 主键约束
+ *
  *
  * cmd黑窗口如何进入mysql命令行模式？
  * 1.mysql -u root -p
@@ -637,7 +638,6 @@ app.use('/api', router);
  * b.为表添加外键约束
  * alter table stu_table add constraint myfk_c_id foreign key(c_id) references class_table(c_id) on update cascade
  * on delete cascade;
- *
  *
  *
  */

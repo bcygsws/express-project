@@ -4,7 +4,7 @@
  * 所有函数都是Promise
  *
  */
-const { exec } = require('../db/mysql');
+const {exec} = require('../db/mysql');
 // 查询所有用户的sql
 // 由于请求参数data,要依赖路由中的req获取，因此，data必须作为userList(data)函数的参数
 
@@ -34,7 +34,7 @@ const getImagesList = (data, sql) => {
 		return rows || {};
 	});
 };
-// 3.2 获取图片分类
+// 3.2 获取图片分类，移动端分类滑动条的渲染
 const getImagesCat = (data) => {
 	const sql = 'select *from category';
 	return exec(sql, data).then((rows) => {
